@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, StyleSheet, Text, TouchableOpacity, View, AsyncStorage } from 'react-native';
+import { Alert, AsyncStorage, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 class Home extends Component {

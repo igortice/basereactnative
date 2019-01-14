@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, View } from 'react-native';
 import Routes from './Routes';
 
 export default class App extends Component {
   state = { hasToken: null };
 
-  componentWillMount() {
+  componentDidMount(): void {
     AsyncStorage.getItem('id_token').then((token) => {
       this.setState({ hasToken: token !== null });
     });
@@ -13,7 +13,10 @@ export default class App extends Component {
 
   render() {
     return (
-      <Routes hasToken={ this.state.hasToken }/>
+      this.state.hasToken !== null ?
+        <Routes hasToken={ this.state.hasToken }/> :
+        <View></View>
     );
   }
+
 }
