@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, TextInput, TouchableOpacity, View, StyleSheet } from 'react-native';
+import { AsyncStorage, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 class Login extends Component {
@@ -11,6 +11,14 @@ class Login extends Component {
 
   userLogin() {
     Actions.home();
+  }
+
+  async saveItem(item, selectedValue) {
+    try {
+      await AsyncStorage.setItem(item, selectedValue);
+    } catch (error) {
+      console.error('AsyncStorage error: ' + error.message);
+    }
   }
 
   render() {
